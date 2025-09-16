@@ -800,7 +800,7 @@ $current_date = date('d/m/Y');
                         <i class="fas fa-database"></i>
                     </div>
                     <h3>Big Data</h3>
-                    <p>Procesamiento de millones de registros con tecnología de alto rendimiento</p>
+                    <p>Procesamiento de miles de registros con tecnología de alto rendimiento</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
@@ -814,7 +814,7 @@ $current_date = date('d/m/Y');
                         <i class="fas fa-users-cog"></i>
                     </div>
                     <h3>CRM Electoral</h3>
-                    <p>Gestión integral de 4.9 millones de electores del estado</p>
+                    <p>Gestión integral de electores en el estado</p>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
