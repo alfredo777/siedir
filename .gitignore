@@ -1,0 +1,44 @@
+## 3. Crear archivo .gitignore
+
+```gitignore
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archivos de configuración local
+config.local.php
+.env
+.env.local
+
+# Logs y archivos temporales
+*.log
+logs/
+temp/
+tmp/
+cache/
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencias (si las agregas después)
+vendor/
+node_modules/
+
+# Archivos de base de datos locales
+*.sql
+*.sqlite
+*.db
+
+# Backups
+*.backup
+*.bak
+*.swp
+*~
+
+# Archivos sensibles
+passwords.txt
+credentials.json

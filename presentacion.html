@@ -1,0 +1,1275 @@
+<!DOCTYPE html><html lang="es"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIEDR Puebla - Sistema Integral de Inteligencia Electoral</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --success: #00d4aa;
+            --warning: #ffa726;
+            --info: #29b6f6;
+            --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-accent: linear-gradient(135deg, #000000 0%, #ff6b6b 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-sm: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Presentation Container */
+        .presentation {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Slides Container */
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Individual Slide */
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            padding: 2rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Title Slide */
+        .slide-title {
+            background: var(--gradient-dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .slide-title h1 {
+            color: var(--white);
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide-title .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .logo-icon {
+            font-size: 5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .timeline-marker {
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-accent);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #666;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Accent Section */
+        .accent-section {
+            background: var(--gradient-accent);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+
+        .accent-section h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dark Section */
+        .dark-section {
+            background: var(--gradient-dark);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+
+        .dark-section h3 {
+            color: var(--white);
+        }
+
+        .dark-section p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            background: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-dots {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            width: 1.5rem;
+            border-radius: 0.25rem;
+            background: var(--accent);
+        }
+
+        /* Progress Bar */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .slide-title h1 {
+                font-size: 2.5rem;
+            }
+
+            .slide-title .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                font-size: 3rem;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .nav {
+                bottom: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-btn {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .tech-stack {
+                flex-direction: column;
+            }
+
+            .tech-item {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-left {
+            animation: slideLeft 0.8s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .scale-in {
+            animation: scaleIn 0.6s ease-out;
+        }
+    </style>
+<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Presentation Container -->
+    <div class="presentation">
+        <div class="slides">
+            
+            <!-- Slide 1: Title -->
+            <div class="slide slide-title active">
+                <div class="slide-content">
+                    <i class="fas fa-chart-pie logo-icon"></i>
+                    <h1 class="fade-in">SIEDR Puebla</h1>
+                    <p class="subtitle fade-in">Sistema Integral de Inteligencia Electoral y Desarrollo Regional</p>
+                    <div class="badge-container fade-in">
+                        <div class="badge">217 Municipios</div>
+                        <div class="badge">6.6M Habitantes</div>
+                        <div class="badge">4.9M Electores</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: ¿Qué es SIEDR? -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>¿Qué es SIEDR Puebla?</h2>
+                    <p>Plataforma integral diseñada para el Estado de Puebla, revolucionando la gestión política mediante:</p>
+                    
+                    <div class="grid grid-2">
+                        <div class="card">
+                            <i class="fas fa-brain card-icon"></i>
+                            <h4>Inteligencia Artificial</h4>
+                            <p>Análisis predictivo y generación automática de reportes para los 217 municipios</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-map-marked-alt card-icon"></i>
+                            <h4>Cobertura Total</h4>
+                            <p>Visualización territorial completa con mapas interactivos de cada municipio</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-users card-icon"></i>
+                            <h4>Gestión de Población</h4>
+                            <p>CRM político para gestión ciudadana</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-chart-line card-icon"></i>
+                            <h4>Análisis Electoral</h4>
+                            <p>Tendencias y proyecciones para elecciones locales y federales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Por qué SIEDR para Gestión Territorial -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>La Mejor Opción para Gestión Territorial</h2>
+                    
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-layer-group card-icon"></i>
+                            <h4>Integración Multicapa</h4>
+                            <p>Cruza datos electorales, socioeconómicos y demográficos en tiempo real</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-crosshairs card-icon"></i>
+                            <h4>Precisión Geográfica</h4>
+                            <p>Mapeo detallado hasta nivel de sección electoral con polígonos exactos</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-sync card-icon"></i>
+                            <h4>Actualización Continua</h4>
+                            <p>Sincronización de datos con INEGI, INE y gobierno estatal</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-mobile-alt card-icon"></i>
+                            <h4>Acceso en Campo</h4>
+                            <p>Web móvil para registro con geolocalización en tiempo real</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-users-cog card-icon"></i>
+                            <h4>Gestión de Estructuras</h4>
+                            <p>Control de líderes territoriales y áreas de influencia</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-chart-bar card-icon"></i>
+                            <h4>Análisis Predictivo</h4>
+                            <p>IA que proyecta tendencias territoriales por región</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Big Data -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Manejo de Big Data</h2>
+                    
+                    <div class="accent-section">
+                        <h3>Capacidades de Procesamiento Masivo</h3>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">10 a 20 mil</span>
+                                <span class="stat-label">Registros</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500GB+</span>
+                                <span class="stat-label">Almacenamiento</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">10K</span>
+                                <span class="stat-label">Consultas/minuto</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">Uptime</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-tachometer-alt card-icon"></i>
+                            <h4>Tiempo Real</h4>
+                            <ul class="feature-list">
+                                <li>ElasticSearch indexación</li>
+                                <li>Redis cache distribuido</li>
+                                <li>Procesamiento paralelo</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-shield-alt card-icon"></i>
+                            <h4>Seguridad</h4>
+                            <ul class="feature-list">
+                                <li>Encriptación AES-256</li>
+                                <li>SSL/TLS en tránsito</li>
+                                <li>Auditoría completa</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-expand-arrows-alt card-icon"></i>
+                            <h4>Escalabilidad</h4>
+                            <ul class="feature-list">
+                                <li>Microservicios</li>
+                                <li>Balanceo automático</li>
+                                <li>Crecimiento elástico</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Operador Base -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Operador Base: Pieza Clave</h2>
+                    
+                    <div class="dark-section">
+                        <h3>Mantenimiento Continuo Indispensable</h3>
+                        <p>Es necesario un operador tecnológico para dar mantenimiento al sistema (costo no estimado).</p>
+                    </div>
+
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-sync-alt card-icon"></i>
+                            <h4>Actualización Diaria</h4>
+                            <p>Carga de padrones y cambios territoriales</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-broom card-icon"></i>
+                            <h4>Depuración</h4>
+                            <p>Limpieza de duplicados y validación</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-database card-icon"></i>
+                            <h4>Respaldos</h4>
+                            <p>Backups cada 6 horas con redundancia</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-chart-line card-icon"></i>
+                            <h4>Monitoreo 24/7</h4>
+                            <p>Supervisión y alertas proactivas</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-code card-icon"></i>
+                            <h4>Optimización</h4>
+                            <p>Ajuste de consultas SQL continuo</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-headset card-icon"></i>
+                            <h4>Soporte</h4>
+                            <p>Atención inmediata a usuarios</p>
+                        </div>
+                    </div>
+
+                    <div class="stats dark-section">
+                        <div class="stat">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Recursos operativos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$15-20K</span>
+                            <span class="stat-label">Inversión Mensual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Estadísticas Puebla -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Ecosistema</h2>
+                    
+                    <div class="stats accent-section">
+                        <div class="stat">
+                            <span class="stat-number">217</span>
+                            <span class="stat-label">Municipios por cubrir</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">6.6M</span>
+                            <span class="stat-label">Posibles Generadores de datos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.9M</span>
+                            <span class="stat-label">Electores para indexar</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">26</span>
+                            <span class="stat-label">Distritos Locales</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15</span>
+                            <span class="stat-label">Distritos Federales</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">6,556</span>
+                            <span class="stat-label">Localidades</span>
+                        </div>
+                    </div>
+
+                    <div class="accent-section">
+                        <h3>Objetivos</h3>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">15K+</span>
+                                <span class="stat-label">Afiliados</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3,500</span>
+                                <span class="stat-label">Secciones</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1,250</span>
+                                <span class="stat-label">Actividades/Mes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Precisión IA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Módulos -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Módulos del Sistema</h2>
+                    
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-globe-americas card-icon"></i>
+                            <h4>Gestión Territorial</h4>
+                            <ul class="feature-list">
+                                <li>217 Municipios</li>
+                                <li>6,556 Localidades</li>
+                                <li>Indicadores socioeconómicos</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-vote-yea card-icon"></i>
+                            <h4>Análisis Electoral</h4>
+                            <ul class="feature-list">
+                                <li>26 Distritos locales</li>
+                                <li>15 Distritos federales</li>
+                                <li>Histórico 2010-2024</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-users-cog card-icon"></i>
+                            <h4>CRM Poblano</h4>
+                            <ul class="feature-list">
+                                <li>Gestión de electores</li>
+                                <li>Segmentación regional</li>
+                                <li>Comunicación masiva</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-calendar-check card-icon"></i>
+                            <h4>Actividades</h4>
+                            <ul class="feature-list">
+                                <li>Cobertura estadística</li>
+                                <li>Control información política</li>
+                                <li>Medición de impacto</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-map card-icon"></i>
+                            <h4>Mapas</h4>
+                            <ul class="feature-list">
+                                <li>Mapa interactivo</li>
+                                <li>7 regiones</li>
+                                <li>Zonas metropolitanas</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-file-alt card-icon"></i>
+                            <h4>Reportes IA</h4>
+                            <ul class="feature-list">
+                                <li>Por municipio</li>
+                                <li>Análisis regional</li>
+                                <li>Proyecciones</li>
+                                <li>Por gobernante</li>
+                                <li>Por partido</li>
+                                <li>Por datos electorales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Timeline Implementación -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Implementación Express - 4 Meses</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker">1</div>
+                            <div class="timeline-content">
+                                <h4>Semanas 1-2: Infraestructura</h4>
+                                <p>Configuración del entorno y carga de 217 municipios</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">2</div>
+                            <div class="timeline-content">
+                                <h4>Semanas 3-4: Módulo Electoral</h4>
+                                <p>Sistema electoral con datos históricos estatales</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">3</div>
+                            <div class="timeline-content">
+                                <h4>Mes 2: Gestión de Población</h4>
+                                <p>CRM, importación de padrones y comunicación</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">4</div>
+                            <div class="timeline-content">
+                                <h4>Mes 3: Inteligencia Operativa</h4>
+                                <p>Actividades, análisis ROI y mapas interactivos</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">5</div>
+                            <div class="timeline-content">
+                                <h4>Mes 4: IA y Optimización</h4>
+                                <p>Integración IA, reportes y capacitación</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Segunda Etapa -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Segunda Etapa: Análisis de Medios</h2>
+                    <p>Integración post-implementación (Mes 5-6)</p>
+                    
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-newspaper card-icon"></i>
+                            <h4>Monitoreo de Noticias</h4>
+                            <ul class="feature-list">
+                                <li>50+ medios locales</li>
+                                <li>Análisis de sentimiento</li>
+                                <li>Alertas automáticas</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-hashtag card-icon"></i>
+                            <h4>Redes Sociales</h4>
+                            <ul class="feature-list">
+                                <li>APIs Twitter/Facebook</li>
+                                <li>Mapeo de influencers</li>
+                                <li>Detección de tendencias</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-bolt card-icon"></i>
+                            <h4>Respuesta Rápida</h4>
+                            <ul class="feature-list">
+                                <li>Comunicados con IA</li>
+                                <li>Gestión de crisis</li>
+                                <li>Métricas de impacto</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accent-section">
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">Meses Extra</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Monitoreo</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Fuentes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Stack Tecnológico -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Stack Tecnológico</h2>
+                    
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fas fa-gem"></i>
+                            <span>Ruby on Rails</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <span>MariaDB</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-search"></i>
+                            <span>ElasticSearch</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-memory"></i>
+                            <span>Redis</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-map"></i>
+                            <span>Leaflet.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Chart.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <span>OpenAI API</span>
+                        </div>
+                    </div>
+
+                    <div class="dark-section">
+                        <h3>Características de Seguridad</h3>
+                        <div class="grid grid-3">
+                            <div style="color: white;">
+                                <i class="fas fa-lock" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                                <h4 style="color: white;">Encriptación</h4>
+                                <p>AES-256 + JWT</p>
+                            </div>
+                            <div style="color: white;">
+                                <i class="fas fa-user-shield" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                                <h4 style="color: white;">Auditoría</h4>
+                                <p>Logs completos</p>
+                            </div>
+                            <div style="color: white;">
+                                <i class="fas fa-server" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                                <h4 style="color: white;">Redundancia</h4>
+                                <p>Multi-región</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Beneficios -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Beneficios para Puebla</h2>
+                    
+                    <div class="grid grid-2">
+                        <div class="card">
+                            <i class="fas fa-map-marked-alt card-icon"></i>
+                            <h4>Cobertura Total</h4>
+                            <p>217 municipios integrados con indicadores completos</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-users card-icon"></i>
+                            <h4>4.9M Electores</h4>
+                            <p>Base de datos optimizada para el padrón completo</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-chart-line card-icon"></i>
+                            <h4>Análisis Regional</h4>
+                            <p>Inteligencia para las 7 regiones socioeconómicas</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-clock card-icon"></i>
+                            <h4>4 Meses</h4>
+                            <p>Sistema operativo en 3 meses, optimizado al 4to</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-dollar-sign card-icon"></i>
+                            <h4>ROI Rápido</h4>
+                            <p>Ahorro inmediato en análisis y reportes</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-mobile-alt card-icon"></i>
+                            <h4>Acceso Móvil</h4>
+                            <p>Consulta desde cualquier lugar en tiempo real</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: CTA Final -->
+            <div class="slide slide-title">
+                <div class="slide-content">
+                    <h1>Transforme la Gestión Electoral de Puebla</h1>
+                    <p class="subtitle">SIEDR: La herramienta definitiva para los 217 municipios</p>
+                    
+
+                    <div class="stats" style="margin-top: 3rem;">
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">4</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Meses</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">217</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Municipios</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">100%</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Cobertura</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">10 años</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Vida</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="nav-dots" id="navDots"></div>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        const navDots = document.getElementById('navDots');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Initialize dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            navDots.appendChild(dot);
+        }
+
+        const dots = document.querySelectorAll('.nav-dot');
+
+        function updateSlide() {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show current slide
+            slides[currentSlide].classList.add('active');
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update buttons
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            
+            // Update progress
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Animate elements
+            animateSlideElements();
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                currentSlide = newSlide;
+                updateSlide();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function animateSlideElements() {
+            const activeSlide = slides[currentSlide];
+            const animatedElements = activeSlide.querySelectorAll('.fade-in, .slide-left, .scale-in');
+            animatedElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'Escape') {
+                // Could implement fullscreen exit here
+            }
+        });
+
+        // Touch/Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    changeSlide(1); // Swipe left - next slide
+                } else {
+                    changeSlide(-1); // Swipe right - previous slide
+                }
+            }
+        }
+
+        // Initialize
+        updateSlide();
+    </script>
+
+
+</body></html>
