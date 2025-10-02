@@ -20,7 +20,7 @@
             --warning: #ffa726;
             --info: #29b6f6;
             --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --gradient-accent: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            --gradient-accent: linear-gradient(135deg, #000000 0%, #ff6b6b 100%);
             --shadow: 0 10px 30px rgba(0,0,0,0.1);
             --shadow-sm: 0 5px 15px rgba(0,0,0,0.08);
         }
@@ -213,13 +213,13 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--accent);
+            color: #fff;
             display: block;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.9);
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -255,11 +255,6 @@
             padding: 1.5rem;
             border-radius: 0.5rem;
             box-shadow: var(--shadow-sm);
-        }
-
-        .timeline-content.new {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe0a1 100%);
-            border: 2px solid var(--warning);
         }
 
         .timeline-content h4 {
@@ -347,62 +342,6 @@
         .tech-item i {
             color: var(--accent);
             font-size: 1.2rem;
-        }
-
-        /* Special Sections */
-        .operator-warning {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe0a1 100%);
-            border: 2px solid var(--warning);
-            padding: 2rem;
-            border-radius: 1rem;
-            margin: 2rem 0;
-        }
-
-        .operator-warning h3 {
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .operator-warning .icon {
-            color: var(--warning);
-            font-size: 2rem;
-        }
-
-        .phase2-section {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            border: 2px solid var(--success);
-            padding: 2rem;
-            border-radius: 1rem;
-            margin: 2rem 0;
-        }
-
-        .phase2-section h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Audit Modules - NEW */
-        .audit-module {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border: 2px solid var(--info);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .audit-module h4 {
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .audit-module .icon {
-            color: var(--info);
         }
 
         /* CTA Buttons */
@@ -499,7 +438,6 @@
             border-radius: 50%;
             background: #ccc;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .nav-dot.active {
@@ -650,62 +588,53 @@
     </style>
 <script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
 <body>
-    <div class="presentation">
-        <!-- Progress Bar -->
-        <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
+    <!-- Progress Bar -->
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-        <!-- Slides Container -->
+    <!-- Presentation Container -->
+    <div class="presentation">
         <div class="slides">
+            
             <!-- Slide 1: Title -->
             <div class="slide slide-title active">
-                <div class="slide-content fade-in">
-                    <div class="logo-icon">
-                        <i class="fas fa-chart-network"></i>
-                    </div>
-                    <h1>SIEDR Puebla</h1>
-                    <p class="subtitle">Sistema Integral de Inteligencia Electoral y Desarrollo Regional</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">217</span>
-                            <span class="stat-label">Municipios</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">6.6M</span>
-                            <span class="stat-label">Habitantes</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">4.9M</span>
-                            <span class="stat-label">Electores</span>
-                        </div>
+                <div class="slide-content">
+                    <i class="fas fa-chart-pie logo-icon"></i>
+                    <h1 class="fade-in">SIEDR Puebla</h1>
+                    <p class="subtitle fade-in">Sistema Integral de Inteligencia Electoral y Desarrollo Regional</p>
+                    <div class="badge-container fade-in">
+                        <div class="badge">217 Municipios</div>
+                        <div class="badge">6.6M Habitantes</div>
+                        <div class="badge">4.9M Electores</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 2: What is SIEDR -->
+            <!-- Slide 2: ¿Qué es SIEDR? -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>¿Qué es SIEDR Puebla?</h2>
                     <p>Plataforma integral diseñada para el Estado de Puebla, revolucionando la gestión política mediante:</p>
+                    
                     <div class="grid grid-2">
-                        <div class="card scale-in">
-                            <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <div class="card">
+                            <i class="fas fa-brain card-icon"></i>
                             <h4>Inteligencia Artificial</h4>
                             <p>Análisis predictivo y generación automática de reportes para los 217 municipios</p>
                         </div>
-                        <div class="card scale-in">
-                            <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <div class="card">
+                            <i class="fas fa-map-marked-alt card-icon"></i>
                             <h4>Cobertura Total</h4>
                             <p>Visualización territorial completa con mapas interactivos de cada municipio</p>
                         </div>
-                        <div class="card scale-in">
-                            <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <div class="card">
+                            <i class="fas fa-users card-icon"></i>
                             <h4>Gestión de Población</h4>
                             <p>CRM político para gestión ciudadana</p>
                         </div>
-                        <div class="card scale-in">
-                            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="card">
+                            <i class="fas fa-chart-line card-icon"></i>
                             <h4>Análisis Electoral</h4>
                             <p>Tendencias y proyecciones para elecciones locales y federales</p>
                         </div>
@@ -713,38 +642,39 @@
                 </div>
             </div>
 
-            <!-- Slide 3: Territorial Management -->
+            <!-- Slide 3: Por qué SIEDR para Gestión Territorial -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>La Mejor Opción para Gestión Territorial</h2>
+                    
                     <div class="grid grid-3">
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                            <i class="fas fa-layer-group card-icon"></i>
                             <h4>Integración Multicapa</h4>
                             <p>Cruza datos electorales, socioeconómicos y demográficos en tiempo real</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-map-pin"></i></div>
+                            <i class="fas fa-crosshairs card-icon"></i>
                             <h4>Precisión Geográfica</h4>
                             <p>Mapeo detallado hasta nivel de sección electoral con polígonos exactos</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
+                            <i class="fas fa-sync card-icon"></i>
                             <h4>Actualización Continua</h4>
                             <p>Sincronización de datos con INEGI, INE y gobierno estatal</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <i class="fas fa-mobile-alt card-icon"></i>
                             <h4>Acceso en Campo</h4>
                             <p>Web móvil para registro con geolocalización en tiempo real</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+                            <i class="fas fa-users-cog card-icon"></i>
                             <h4>Gestión de Estructuras</h4>
                             <p>Control de líderes territoriales y áreas de influencia</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-chart-area"></i></div>
+                            <i class="fas fa-chart-bar card-icon"></i>
                             <h4>Análisis Predictivo</h4>
                             <p>IA que proyecta tendencias territoriales por región</p>
                         </div>
@@ -756,162 +686,181 @@
             <div class="slide">
                 <div class="slide-content">
                     <h2>Manejo de Big Data</h2>
-                    <p>Capacidades de Procesamiento Masivo</p>
+                    
                     <div class="accent-section">
-                        <div class="grid grid-4">
+                        <h3>Capacidades de Procesamiento Masivo</h3>
+                        <div class="stats">
                             <div class="stat">
-                                <span class="stat-number" style="color: #fff;">10-20K</span>
+                                <span class="stat-number">10 a 20 mil</span>
                                 <span class="stat-label">Registros</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number" style="color: #fff;">500GB+</span>
+                                <span class="stat-number">500GB+</span>
                                 <span class="stat-label">Almacenamiento</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number" style="color: #fff;">10K</span>
-                                <span class="stat-label">Consultas/min</span>
+                                <span class="stat-number">10K</span>
+                                <span class="stat-label">Consultas/minuto</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number" style="color: #fff;">99.9%</span>
+                                <span class="stat-number">99.9%</span>
                                 <span class="stat-label">Uptime</span>
                             </div>
                         </div>
                     </div>
+
                     <div class="grid grid-3">
-                        <div class="dark-section">
-                            <h3>Tiempo Real</h3>
-                            <ul class="feature-list" style="color: rgba(255,255,255,0.9);">
-                                <li style="color: rgba(255,255,255,0.9);">ElasticSearch indexación</li>
-                                <li style="color: rgba(255,255,255,0.9);">Redis cache distribuido</li>
-                                <li style="color: rgba(255,255,255,0.9);">Procesamiento paralelo</li>
+                        <div class="card">
+                            <i class="fas fa-tachometer-alt card-icon"></i>
+                            <h4>Tiempo Real</h4>
+                            <ul class="feature-list">
+                                <li>ElasticSearch indexación</li>
+                                <li>Redis cache distribuido</li>
+                                <li>Procesamiento paralelo</li>
                             </ul>
                         </div>
-                        <div class="dark-section">
-                            <h3>Seguridad</h3>
-                            <ul class="feature-list" style="color: rgba(255,255,255,0.9);">
-                                <li style="color: rgba(255,255,255,0.9);">Encriptación AES-256</li>
-                                <li style="color: rgba(255,255,255,0.9);">SSL/TLS en tránsito</li>
-                                <li style="color: rgba(255,255,255,0.9);">Auditoría completa</li>
+                        <div class="card">
+                            <i class="fas fa-shield-alt card-icon"></i>
+                            <h4>Seguridad</h4>
+                            <ul class="feature-list">
+                                <li>Encriptación AES-256</li>
+                                <li>SSL/TLS en tránsito</li>
+                                <li>Auditoría completa</li>
                             </ul>
                         </div>
-                        <div class="dark-section">
-                            <h3>Escalabilidad</h3>
-                            <ul class="feature-list" style="color: rgba(255,255,255,0.9);">
-                                <li style="color: rgba(255,255,255,0.9);">Microservicios</li>
-                                <li style="color: rgba(255,255,255,0.9);">Balanceo automático</li>
-                                <li style="color: rgba(255,255,255,0.9);">Crecimiento elástico</li>
+                        <div class="card">
+                            <i class="fas fa-expand-arrows-alt card-icon"></i>
+                            <h4>Escalabilidad</h4>
+                            <ul class="feature-list">
+                                <li>Microservicios</li>
+                                <li>Balanceo automático</li>
+                                <li>Crecimiento elástico</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 5: Operator -->
+            <!-- Slide 5: Operador Base -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>Operador Base: Pieza Clave</h2>
-                    <div class="operator-warning">
-                        <h3><i class="fas fa-user-cog icon"></i> Mantenimiento Continuo Indispensable</h3>
+                    
+                    <div class="dark-section">
+                        <h3>Mantenimiento Continuo Indispensable</h3>
                         <p>Es necesario un operador tecnológico para dar mantenimiento al sistema (costo no estimado).</p>
-                        <div class="grid grid-3" style="margin-top: 1.5rem;">
-                            <div>
-                                <h4><i class="fas fa-sync-alt"></i> Actualización Diaria</h4>
-                                <p>Carga de padrones y cambios territoriales</p>
-                            </div>
-                            <div>
-                                <h4><i class="fas fa-broom"></i> Depuración</h4>
-                                <p>Limpieza de duplicados y validación</p>
-                            </div>
-                            <div>
-                                <h4><i class="fas fa-database"></i> Respaldos</h4>
-                                <p>Backups cada 6 horas con redundancia</p>
-                            </div>
-                            <div>
-                                <h4><i class="fas fa-shield-alt"></i> Monitoreo 24/7</h4>
-                                <p>Supervisión y alertas proactivas</p>
-                            </div>
-                            <div>
-                                <h4><i class="fas fa-tachometer-alt"></i> Optimización</h4>
-                                <p>Ajuste de consultas SQL continuo</p>
-                            </div>
-                            <div>
-                                <h4><i class="fas fa-headset"></i> Soporte</h4>
-                                <p>Atención inmediata a usuarios</p>
-                            </div>
+                    </div>
+
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-sync-alt card-icon"></i>
+                            <h4>Actualización Diaria</h4>
+                            <p>Carga de padrones y cambios territoriales</p>
                         </div>
-                        <div class="stats" style="margin-top: 2rem;">
-                            <div class="stat">
-                                <span class="stat-number" style="color: var(--primary);">1</span>
-                                <span class="stat-label" style="color: var(--primary);">Recursos operativos</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" style="color: var(--warning);">$15-20K</span>
-                                <span class="stat-label" style="color: var(--primary);">Inversión Mensual</span>
-                            </div>
+                        <div class="card">
+                            <i class="fas fa-broom card-icon"></i>
+                            <h4>Depuración</h4>
+                            <p>Limpieza de duplicados y validación</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-database card-icon"></i>
+                            <h4>Respaldos</h4>
+                            <p>Backups cada 6 horas con redundancia</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-chart-line card-icon"></i>
+                            <h4>Monitoreo 24/7</h4>
+                            <p>Supervisión y alertas proactivas</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-code card-icon"></i>
+                            <h4>Optimización</h4>
+                            <p>Ajuste de consultas SQL continuo</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-headset card-icon"></i>
+                            <h4>Soporte</h4>
+                            <p>Atención inmediata a usuarios</p>
+                        </div>
+                    </div>
+
+                    <div class="stats dark-section">
+                        <div class="stat">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Recursos operativos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">$15-20K</span>
+                            <span class="stat-label">Inversión Mensual</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 6: Ecosystem -->
+            <!-- Slide 6: Estadísticas Puebla -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>Ecosistema</h2>
-                    <div class="grid grid-3">
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 2rem;">217</h3>
-                            <p>Municipios por cubrir</p>
+                    
+                    <div class="stats accent-section">
+                        <div class="stat">
+                            <span class="stat-number">217</span>
+                            <span class="stat-label">Municipios por cubrir</span>
                         </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 2rem;">6.6M</h3>
-                            <p>Posibles Generadores de datos</p>
+                        <div class="stat">
+                            <span class="stat-number">6.6M</span>
+                            <span class="stat-label">Posibles Generadores de datos</span>
                         </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 2rem;">4.9M</h3>
-                            <p>Electores para indexar</p>
+                        <div class="stat">
+                            <span class="stat-number">4.9M</span>
+                            <span class="stat-label">Electores para indexar</span>
                         </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 2rem;">26</h3>
-                            <p>Distritos Locales</p>
+                        <div class="stat">
+                            <span class="stat-number">26</span>
+                            <span class="stat-label">Distritos Locales</span>
                         </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 2rem;">15</h3>
-                            <p>Distritos Federales</p>
+                        <div class="stat">
+                            <span class="stat-number">15</span>
+                            <span class="stat-label">Distritos Federales</span>
                         </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 2rem;">6,556</h3>
-                            <p>Localidades</p>
+                        <div class="stat">
+                            <span class="stat-number">6,556</span>
+                            <span class="stat-label">Localidades</span>
                         </div>
                     </div>
-                    <h3 style="text-align: center; margin: 2rem 0;">Objetivos</h3>
-                    <div class="grid grid-4">
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 1.8rem;">15K+</h3>
-                            <p>Afiliados</p>
-                        </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 1.8rem;">3,500</h3>
-                            <p>Secciones</p>
-                        </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 1.8rem;">1,250</h3>
-                            <p>Actividades/Mes</p>
-                        </div>
-                        <div class="card">
-                            <h3 style="color: var(--accent); font-size: 1.8rem;">98%</h3>
-                            <p>Precisión IA</p>
+
+                    <div class="accent-section">
+                        <h3>Objetivos</h3>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">15K+</span>
+                                <span class="stat-label">Afiliados</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3,500</span>
+                                <span class="stat-label">Secciones</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1,250</span>
+                                <span class="stat-label">Actividades/Mes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Precisión IA</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 7: Modules -->
+            <!-- Slide 7: Módulos -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>Módulos del Sistema</h2>
+                    
                     <div class="grid grid-3">
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-map"></i></div>
+                            <i class="fas fa-globe-americas card-icon"></i>
                             <h4>Gestión Territorial</h4>
                             <ul class="feature-list">
                                 <li>217 Municipios</li>
@@ -920,7 +869,7 @@
                             </ul>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-vote-yea"></i></div>
+                            <i class="fas fa-vote-yea card-icon"></i>
                             <h4>Análisis Electoral</h4>
                             <ul class="feature-list">
                                 <li>26 Distritos locales</li>
@@ -929,7 +878,7 @@
                             </ul>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-users"></i></div>
+                            <i class="fas fa-users-cog card-icon"></i>
                             <h4>CRM Poblano</h4>
                             <ul class="feature-list">
                                 <li>Gestión de electores</li>
@@ -938,7 +887,7 @@
                             </ul>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-tasks"></i></div>
+                            <i class="fas fa-calendar-check card-icon"></i>
                             <h4>Actividades</h4>
                             <ul class="feature-list">
                                 <li>Cobertura estadística</li>
@@ -947,7 +896,7 @@
                             </ul>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <i class="fas fa-map card-icon"></i>
                             <h4>Mapas</h4>
                             <ul class="feature-list">
                                 <li>Mapa interactivo</li>
@@ -956,7 +905,7 @@
                             </ul>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-robot"></i></div>
+                            <i class="fas fa-file-alt card-icon"></i>
                             <h4>Reportes IA</h4>
                             <ul class="feature-list">
                                 <li>Por municipio</li>
@@ -971,61 +920,11 @@
                 </div>
             </div>
 
-            <!-- NEW Slide 8: Audit and Business Intelligence Modules -->
+            <!-- Slide 8: Timeline Implementación -->
             <div class="slide">
                 <div class="slide-content">
-                    <h2>Nuevos Módulos de Inteligencia</h2>
-                    <p>Expansión del sistema con capacidades avanzadas de análisis empresarial y auditoría</p>
-                    <div class="grid grid-2">
-                        <div class="audit-module">
-                            <h4><i class="fas fa-building icon"></i> Inteligencia Empresarial</h4>
-                            <ul class="feature-list">
-                                <li>Verificación de antecedentes penales</li>
-                                <li>Análisis de vínculos y relaciones de riesgo</li>
-                                <li>Evaluación de reputación corporativa</li>
-                                <li>Mapeo de proveedores y contratos</li>
-                                <li>Historial de contratos gubernamentales</li>
-                            </ul>
-                        </div>
-                        <div class="audit-module">
-                            <h4><i class="fas fa-clipboard-check icon"></i> Auditoría de Obra Pública</h4>
-                            <ul class="feature-list">
-                                <li>Gestión documental con alertas de 3 días</li>
-                                <li>Matriz de cumplimiento normativo</li>
-                                <li>Control de avances físicos y financieros</li>
-                                <li>Verificación de personal y cédulas</li>
-                                <li>Sistema de evidencias con hash</li>
-                            </ul>
-                        </div>
-                        <div class="audit-module">
-                            <h4><i class="fas fa-file-contract icon"></i> Gestión de Contratos</h4>
-                            <ul class="feature-list">
-                                <li>Base de datos de contratos activos</li>
-                                <li>Seguimiento de cumplimiento</li>
-                                <li>Alertas de vencimientos</li>
-                                <li>Análisis de desempeño</li>
-                                <li>Detección de sobrecostos</li>
-                            </ul>
-                        </div>
-                        <div class="audit-module">
-                            <h4><i class="fas fa-exclamation-triangle icon"></i> Sistema de Alertas</h4>
-                            <ul class="feature-list">
-                                <li>Notificaciones con plazo de 3 días</li>
-                                <li>Alertas de vencimientos normativos</li>
-                                <li>Avisos de cambios en status legal</li>
-                                <li>Recordatorios de auditorías</li>
-                                <li>Reportes PDF automatizados</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- UPDATED Slide 9: Implementation Timeline -->
-            <div class="slide" >
-                <div class="slide-content" style="margin-top:420px !important;">
-                    <h2>Implementación Express - 6.5 Meses</h2>
-                    <p>Plan completo con nuevos módulos de inteligencia empresarial y auditoría</p>
+                    <h2>Implementación Express - 4 Meses</h2>
+                    
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-marker">1</div>
@@ -1062,88 +961,70 @@
                                 <p>Integración IA, reportes y capacitación</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker">6</div>
-                            <div class="timeline-content new">
-                                <h4>Mes 5: Inteligencia Empresarial <span class="badge" style="background: var(--warning); color: var(--white); padding: 0.2rem 0.5rem; border-radius: 1rem; font-size: 0.8rem;">NUEVO</span></h4>
-                                <p>Módulo de análisis empresarial, verificación de antecedentes, análisis de proveedores</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker">7</div>
-                            <div class="timeline-content new">
-                                <h4>Mes 6: Auditoría y Cumplimiento <span class="badge" style="background: var(--warning); color: var(--white); padding: 0.2rem 0.5rem; border-radius: 1rem; font-size: 0.8rem;">NUEVO</span></h4>
-                                <p>Sistema de auditoría de obra pública, gestión documental, matriz de cumplimiento</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker">8</div>
-                            <div class="timeline-content new">
-                                <h4>Semanas 25-26: Integración Final <span class="badge" style="background: var(--warning); color: var(--white); padding: 0.2rem 0.5rem; border-radius: 1rem; font-size: 0.8rem;">NUEVO</span></h4>
-                                <p>Integración de todos los módulos, pruebas de stress, capacitación especializada</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- UPDATED Slide 10: Phase 2 -->
+            <!-- Slide 9: Segunda Etapa -->
             <div class="slide">
                 <div class="slide-content">
-                    <h2>Segunda Etapa: Análisis de Medios y Cumplimiento</h2>
-                    <div class="phase2-section">
-                        <h3>Integración post-implementación (Mes 7-8)</h3>
-                        <div class="grid grid-3">
-                            <div class="card">
-                                <div class="card-icon"><i class="fas fa-newspaper"></i></div>
-                                <h4>Monitoreo de Noticias</h4>
-                                <ul class="feature-list">
-                                    <li>50+ medios locales</li>
-                                    <li>Análisis de sentimiento</li>
-                                    <li>Alertas automáticas</li>
-                                </ul>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon"><i class="fas fa-hashtag"></i></div>
-                                <h4>Redes Sociales</h4>
-                                <ul class="feature-list">
-                                    <li>APIs Twitter/Facebook</li>
-                                    <li>Mapeo de influencers</li>
-                                    <li>Detección de tendencias</li>
-                                </ul>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon"><i class="fas fa-bolt"></i></div>
-                                <h4>Respuesta Rápida</h4>
-                                <ul class="feature-list">
-                                    <li>Comunicados con IA</li>
-                                    <li>Gestión de crisis</li>
-                                    <li>Métricas de impacto</li>
-                                </ul>
-                            </div>
+                    <h2>Segunda Etapa: Análisis de Medios</h2>
+                    <p>Integración post-implementación (Mes 5-6)</p>
+                    
+                    <div class="grid grid-3">
+                        <div class="card">
+                            <i class="fas fa-newspaper card-icon"></i>
+                            <h4>Monitoreo de Noticias</h4>
+                            <ul class="feature-list">
+                                <li>50+ medios locales</li>
+                                <li>Análisis de sentimiento</li>
+                                <li>Alertas automáticas</li>
+                            </ul>
                         </div>
-                        <div class="stats" style="margin-top: 2rem;">
+                        <div class="card">
+                            <i class="fas fa-hashtag card-icon"></i>
+                            <h4>Redes Sociales</h4>
+                            <ul class="feature-list">
+                                <li>APIs Twitter/Facebook</li>
+                                <li>Mapeo de influencers</li>
+                                <li>Detección de tendencias</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-bolt card-icon"></i>
+                            <h4>Respuesta Rápida</h4>
+                            <ul class="feature-list">
+                                <li>Comunicados con IA</li>
+                                <li>Gestión de crisis</li>
+                                <li>Métricas de impacto</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accent-section">
+                        <div class="stats">
                             <div class="stat">
-                                <span class="stat-number" style="color: var(--success);">2</span>
-                                <span class="stat-label" style="color: var(--primary);">Meses Extra</span>
+                                <span class="stat-number">2</span>
+                                <span class="stat-label">Meses Extra</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number" style="color: var(--success);">24/7</span>
-                                <span class="stat-label" style="color: var(--primary);">Monitoreo</span>
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Monitoreo</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number" style="color: var(--success);">50+</span>
-                                <span class="stat-label" style="color: var(--primary);">Fuentes</span>
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Fuentes</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 11: Tech Stack -->
+            <!-- Slide 10: Stack Tecnológico -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>Stack Tecnológico</h2>
+                    
                     <div class="tech-stack">
                         <div class="tech-item">
                             <i class="fas fa-gem"></i>
@@ -1158,7 +1039,7 @@
                             <span>ElasticSearch</span>
                         </div>
                         <div class="tech-item">
-                            <i class="fas fa-tachometer-alt"></i>
+                            <i class="fas fa-memory"></i>
                             <span>Redis</span>
                         </div>
                         <div class="tech-item">
@@ -1178,191 +1059,216 @@
                             <span>OpenAI API</span>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Slide 12: Security -->
-            <div class="slide">
-                <div class="slide-content">
-                    <h2>Características de Seguridad</h2>
-                    <div class="grid grid-3">
-                        <div class="accent-section" style="text-align: center;">
-                            <i class="fas fa-lock" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3>Encriptación</h3>
-                            <p>AES-256 + JWT</p>
-                        </div>
-                        <div class="accent-section" style="text-align: center;">
-                            <i class="fas fa-clipboard-list" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3>Auditoría</h3>
-                            <p>Logs completos</p>
-                        </div>
-                        <div class="accent-section" style="text-align: center;">
-                            <i class="fas fa-server" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                            <h3>Redundancia</h3>
-                            <p>Multi-región</p>
+                    <div class="dark-section">
+                        <h3>Características de Seguridad</h3>
+                        <div class="grid grid-3">
+                            <div style="color: white;">
+                                <i class="fas fa-lock" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                                <h4 style="color: white;">Encriptación</h4>
+                                <p>AES-256 + JWT</p>
+                            </div>
+                            <div style="color: white;">
+                                <i class="fas fa-user-shield" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                                <h4 style="color: white;">Auditoría</h4>
+                                <p>Logs completos</p>
+                            </div>
+                            <div style="color: white;">
+                                <i class="fas fa-server" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                                <h4 style="color: white;">Redundancia</h4>
+                                <p>Multi-región</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- UPDATED Slide 13: Benefits -->
+            <!-- Slide 11: Beneficios -->
             <div class="slide">
                 <div class="slide-content">
                     <h2>Beneficios para Puebla</h2>
-                    <div class="grid grid-3">
+                    
+                    <div class="grid grid-2">
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                            <i class="fas fa-map-marked-alt card-icon"></i>
                             <h4>Cobertura Total</h4>
                             <p>217 municipios integrados con indicadores completos</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-users"></i></div>
+                            <i class="fas fa-users card-icon"></i>
                             <h4>4.9M Electores</h4>
                             <p>Base de datos optimizada para el padrón completo</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                            <i class="fas fa-chart-line card-icon"></i>
                             <h4>Análisis Regional</h4>
                             <p>Inteligencia para las 7 regiones socioeconómicas</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
-                            <h4>6.5 Meses</h4>
-                            <p>Sistema completo con módulos de auditoría</p>
+                            <i class="fas fa-clock card-icon"></i>
+                            <h4>4 Meses</h4>
+                            <p>Sistema operativo en 3 meses, optimizado al 4to</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <i class="fas fa-dollar-sign card-icon"></i>
                             <h4>ROI Rápido</h4>
                             <p>Ahorro inmediato en análisis y reportes</p>
                         </div>
                         <div class="card">
-                            <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <i class="fas fa-mobile-alt card-icon"></i>
                             <h4>Acceso Móvil</h4>
                             <p>Consulta desde cualquier lugar en tiempo real</p>
                         </div>
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
-                            <h4>Auditoría Integral</h4>
-                            <p>Control total de obra pública y contratos</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
-                            <h4>Reportes Oficiales</h4>
-                            <p>Generación automática en formato gubernamental</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-user-shield"></i></div>
-                            <h4>Verificación Completa</h4>
-                            <p>Antecedentes y vínculos de riesgo</p>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- UPDATED Slide 14: CTA -->
-            <div class="slide">
+            <!-- Slide 12: CTA Final -->
+            <div class="slide slide-title">
                 <div class="slide-content">
-                    <div class="dark-section" style="text-align: center; padding: 3rem;">
-                        <h2 style="color: var(--white); margin-bottom: 1rem;">Transforme la Gestión Electoral de Puebla</h2>
-                        <p style="font-size: 1.2rem; margin-bottom: 3rem;">SIEDR: La herramienta definitiva para los 217 municipios con inteligencia empresarial y auditoría</p>
-                        <div class="stats">
-                            <div class="stat">
-                                <span class="stat-number" style="color: var(--accent);">6.5</span>
-                                <span class="stat-label">Meses</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" style="color: var(--accent);">217</span>
-                                <span class="stat-label">Municipios</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" style="color: var(--accent);">100%</span>
-                                <span class="stat-label">Cobertura</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" style="color: var(--accent);">10 años</span>
-                                <span class="stat-label">Vida</span>
-                            </div>
+                    <h1>Transforme la Gestión Electoral de Puebla</h1>
+                    <p class="subtitle">SIEDR: La herramienta definitiva para los 217 municipios</p>
+                    
+
+                    <div class="stats" style="margin-top: 3rem;">
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">4</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Meses</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">217</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Municipios</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">100%</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Cobertura</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" style="color: white;">10 años</span>
+                            <span class="stat-label" style="color: rgba(255,255,255,0.8);">Vida</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Navigation -->
-        <div class="nav">
-            <button class="nav-btn" onclick="changeSlide(-1)" id="prevBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="nav-dots" id="navDots"></div>
-            <button class="nav-btn" onclick="changeSlide(1)" id="nextBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
         </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="nav-dots" id="navDots"></div>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        const navDots = document.getElementById('navDots');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-        // Create navigation dots
-        function createDots() {
-            const dotsContainer = document.getElementById('navDots');
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'nav-dot';
-                if (i === 0) dot.classList.add('active');
-                dot.onclick = () => goToSlide(i);
-                dotsContainer.appendChild(dot);
-            }
+        // Initialize dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            navDots.appendChild(dot);
         }
 
-        // Update UI
-        function updateUI() {
-            // Update slides
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentSlide);
-            });
+        const dots = document.querySelectorAll('.nav-dot');
 
+        function updateSlide() {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show current slide
+            slides[currentSlide].classList.add('active');
+            
             // Update dots
-            const dots = document.querySelectorAll('.nav-dot');
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
-
+            
             // Update buttons
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
-
-            // Update progress bar
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            
+            // Update progress
             const progress = ((currentSlide + 1) / totalSlides) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
+            progressBar.style.width = `${progress}%`;
+            
+            // Animate elements
+            animateSlideElements();
         }
 
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateUI();
-        }
-
-        // Change slide
         function changeSlide(direction) {
             const newSlide = currentSlide + direction;
             if (newSlide >= 0 && newSlide < totalSlides) {
                 currentSlide = newSlide;
-                updateUI();
+                updateSlide();
             }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function animateSlideElements() {
+            const activeSlide = slides[currentSlide];
+            const animatedElements = activeSlide.querySelectorAll('.fade-in, .slide-left, .scale-in');
+            animatedElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
         }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'Escape') {
+                // Could implement fullscreen exit here
+            }
         });
 
+        // Touch/Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    changeSlide(1); // Swipe left - next slide
+                } else {
+                    changeSlide(-1); // Swipe right - previous slide
+                }
+            }
+        }
+
         // Initialize
-        createDots();
-        updateUI();
+        updateSlide();
     </script>
 
 

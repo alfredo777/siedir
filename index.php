@@ -744,10 +744,18 @@ $current_date = date('d/m/Y');
                         <a href="presentacion.html" class="btn btn-primary">
                             <i class="fas fa-play-circle"></i>
                             <span>Ver Presentación</span>
-                        </a>
+                        </a><br>
                         <a href="reporte.html" class="btn btn-secondary">
                             <i class="fas fa-file-alt"></i>
-                            <span>Ejemplo de Reporte</span>
+                            <span>Reporte de Funcionario</span>
+                        </a>
+                         <a href="reporteindustrial.html" class="btn btn-secondary">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Reporte de Empresa</span>
+                        </a>
+                         <a href="auditoria.html" class="btn btn-secondary">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Reporte de Auditoria</span>
                         </a>
                     </div>
                 </div>
@@ -782,57 +790,120 @@ $current_date = date('d/m/Y');
 
     <!-- Features Section -->
     <section class="features">
-        <div class="features-container">
-            <div class="features-header fade-in">
-                <h2>Capacidades del Sistema</h2>
-                <p>Tecnología avanzada para la gestión política moderna</p>
+    <div class="features-container">
+        <div class="features-header fade-in">
+            <h2>Capacidades del Sistema</h2>
+            <p>Tecnología avanzada para la gestión política moderna</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Inteligencia Artificial</h3>
+                <p>Análisis predictivo y generación automática de reportes con IA de última generación</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Inteligencia Artificial</h3>
-                    <p>Análisis predictivo y generación automática de reportes con IA de última generación</p>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-database"></i>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Big Data</h3>
-                    <p>Procesamiento de miles de registros con tecnología de alto rendimiento</p>
+                <h3>Big Data</h3>
+                <p>Procesamiento de miles de registros con tecnología de alto rendimiento</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt"></i>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3>Mapas Interactivos</h3>
-                    <p>Visualización territorial completa con datos en tiempo real</p>
+                <h3>Mapas Interactivos</h3>
+                <p>Visualización territorial completa con datos en tiempo real</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-users-cog"></i>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3>CRM Electoral</h3>
-                    <p>Gestión integral de electores en el estado</p>
+                <h3>CRM Electoral</h3>
+                <p>Gestión integral de electores en el estado</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Seguridad Total</h3>
-                    <p>Encriptación AES-256 y auditoría completa de accesos</p>
+                <h3>Seguridad Total</h3>
+                <p>Encriptación AES-256 y auditoría completa de accesos</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Acceso Móvil</h3>
-                    <p>Consulte desde cualquier dispositivo en tiempo real</p>
+                <h3>Acceso Móvil</h3>
+                <p>Consulte desde cualquier dispositivo en tiempo real</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-building"></i>
                 </div>
+                <h3>Inteligencia Empresarial</h3>
+                <p>Análisis completo de empresas con verificación de antecedentes, proveedores, contratos gubernamentales y reputación corporativa</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3>Verificación de Antecedentes</h3>
+                <p>Sistema integral de verificación de antecedentes penales y vínculos de riesgo para socios y directivos empresariales</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <h3>Auditoría de Obra Pública</h3>
+                <p>Control y seguimiento de obras públicas con gestión documental, cumplimiento normativo y alertas de vencimientos</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3>Gestión de Contratos</h3>
+                <p>Monitoreo de contratos gubernamentales con seguimiento de cumplimiento, avances físicos y financieros en tiempo real</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Sistema de Alertas</h3>
+                <p>Notificaciones automáticas para documentación pendiente con plazos legales de 3 días naturales según normativa</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-fingerprint"></i>
+                </div>
+                <h3>Evidencia Digital</h3>
+                <p>Trazabilidad completa con sistema de hash para integridad documental y cadena de custodia digital certificada</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3>Cumplimiento Normativo</h3>
+                <p>Matriz de cumplimiento con LOPSRM, NOM, NMX y regulaciones estatales con evaluación automática de requisitos</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Análisis de Riesgo</h3>
+                <p>Evaluación multinivel de riesgos empresariales, operativos y de cumplimiento con indicadores en tiempo real</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <h3>Reportes Exportables</h3>
+                <p>Generación automática de informes oficiales en PDF con metadatos, firmas digitales y formato gubernamental</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
